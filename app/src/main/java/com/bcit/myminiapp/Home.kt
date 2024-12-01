@@ -36,7 +36,10 @@ fun Home(navController: NavController) {
             value = pokemonState.searchFlow.collectAsState().value, onValueChange = {
                 pokemonState.searchFlow.value = it
             },
-            textStyle = TextStyle(fontSize = 30.sp)
+            textStyle = TextStyle(fontSize = 40.sp),
+            placeholder = {
+                Text(text = "Enter Pokemon name", fontSize = 24.sp)
+            }
         )
         Spacer(Modifier.height(16.dp))
         LazyColumn(
@@ -48,7 +51,12 @@ fun Home(navController: NavController) {
                 Text(pokemonState.pokemon[it].name, fontSize = 30.sp)
                 Spacer(Modifier.height(30.dp))
                 AsyncImage(
-                    model = Endpoints.IMAGE_ENDPOINT.format(pokemonState.pokemon[it].id.replace("-", "/")),
+                    model = Endpoints.IMAGE_ENDPOINT.format(
+                        pokemonState.pokemon[it].id.replace(
+                            "-",
+                            "/"
+                        )
+                    ),
                     contentDescription = null
                 )
             }
