@@ -1,14 +1,18 @@
 package com.bcit.myminiapp
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -21,9 +25,12 @@ import com.bcit.myminiapp.ui.state.PokemonState
 fun Details(navController: NavController, pokemonId: String?) {
     var pokemonState: PokemonState = viewModel(navController.getBackStackEntry("home"))
     val pokemon = pokemonState.pokemon.find { it.id == pokemonId }
+    val uriHandler = LocalUriHandler.current
 
     Column(
-        Modifier.fillMaxSize().padding(16.dp),
+        Modifier
+            .fillMaxSize()
+            .padding(16.dp),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -31,13 +38,26 @@ fun Details(navController: NavController, pokemonId: String?) {
             Text(text = "Name: ${pokemon.name}", fontSize = 24.sp)
             Text(text = "ID: ${pokemon.id}", fontSize = 20.sp)
             AsyncImage(
-                model = Endpoints.HIRES_IMAGE_ENDPOINT.format(pokemon.id.replace("-", "/")
+                model = Endpoints.HIRES_IMAGE_ENDPOINT.format(
+                    pokemon.id.replace("-", "/")
                 ),
                 contentDescription = "Image of ${pokemon.name}",
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 16.dp)
             )
+            pokemon.link?.url?.let {
+                Button(
+                    onClick = { uriHandler.openUri(it) },
+                    modifier = Modifier.padding(top = 16.dp)
+                ) {
+                    Text(
+                        text = "Buy this Card",
+                        modifier = Modifier
+                            .padding(8.dp)
+                    )
+                }
+            }
         } else {
             Text(text = "Pokémon not found", fontSize = 20.sp)
         }
