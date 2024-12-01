@@ -52,10 +52,7 @@ fun Home(navController: NavController) {
                 Spacer(Modifier.height(30.dp))
                 AsyncImage(
                     model = Endpoints.IMAGE_ENDPOINT.format(
-                        pokemonState.pokemon[it].id.replace(
-                            "-",
-                            "/"
-                        )
+                        pokemonState.pokemon[it].id.replace("-", "/")
                     ),
                     contentDescription = null
                 )
