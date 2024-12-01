@@ -10,13 +10,13 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.bcit.myminiapp.ui.state.ArtState
+import com.bcit.myminiapp.ui.state.PokemonState
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val artRepository = (application as MyApp).artRepository
+        val pokemonRepository = (application as MyApp).pokemonRepository
 
         setContent {
             val navController = rememberNavController()
@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.padding(padding)) {
                     composable("home") {
                         viewModel(navController.getBackStackEntry("home")) {
-                            ArtState(artRepository)
+                            PokemonState(pokemonRepository)
                         }
                         Home(navController)
                     }

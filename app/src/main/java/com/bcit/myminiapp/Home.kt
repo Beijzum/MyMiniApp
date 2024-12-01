@@ -20,12 +20,12 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil3.compose.AsyncImage
 import com.bcit.myminiapp.data.Endpoints
-import com.bcit.myminiapp.ui.state.ArtState
+import com.bcit.myminiapp.ui.state.PokemonState
 
 @Composable
 fun Home(navController: NavController) {
 
-    var artState: ArtState = viewModel(navController.getBackStackEntry("home"))
+    var pokemonState: PokemonState = viewModel(navController.getBackStackEntry("home"))
 
     Column(
         Modifier.fillMaxSize(),
@@ -33,8 +33,8 @@ fun Home(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         TextField( // emits every time type
-            value = artState.searchFlow.collectAsState().value, onValueChange = {
-                artState.searchFlow.value = it
+            value = pokemonState.searchFlow.collectAsState().value, onValueChange = {
+                pokemonState.searchFlow.value = it
             },
             textStyle = TextStyle(fontSize = 30.sp)
         )
@@ -44,11 +44,11 @@ fun Home(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            items(artState.artwork.size) {
-                Text(artState.artwork[it].name, fontSize = 30.sp)
+            items(pokemonState.pokemon.size) {
+                Text(pokemonState.pokemon[it].name, fontSize = 30.sp)
                 Spacer(Modifier.height(30.dp))
                 AsyncImage(
-                    model = Endpoints.IMAGE_ENDPOINT.format(artState.artwork[it].id.replace("-", "/")),
+                    model = Endpoints.IMAGE_ENDPOINT.format(pokemonState.pokemon[it].id.replace("-", "/")),
                     contentDescription = null
                 )
             }

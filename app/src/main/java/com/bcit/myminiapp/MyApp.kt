@@ -1,7 +1,7 @@
 package com.bcit.myminiapp
 
 import android.app.Application
-import com.bcit.myminiapp.data.ArtRepository
+import com.bcit.myminiapp.data.PokemonRepository
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.serialization.gson.gson
@@ -14,7 +14,7 @@ class MyApp : Application() {
         }
     }
 
-    val artRepository by lazy {
-        ArtRepository(client)
+    val pokemonRepository by lazy {
+        PokemonRepository(client)
     }
 }

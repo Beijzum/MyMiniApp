@@ -2,12 +2,12 @@ package com.bcit.myminiapp.data
 
 import com.google.gson.annotations.SerializedName
 
-data class Art(
+data class Pokemon(
     @SerializedName("data")
-    val pieces: List<ArtPiece>
+    val pokemonList: List<PokemonDetails>
 )
 
-data class ArtPiece(
+data class PokemonDetails(
     val id: String,
     val name: String,
 )

@@ -3,17 +3,15 @@ package com.bcit.myminiapp.ui.state
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bcit.myminiapp.data.ArtPiece
-import com.bcit.myminiapp.data.ArtRepository
+import com.bcit.myminiapp.data.PokemonDetails
+import com.bcit.myminiapp.data.PokemonRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.launch
-import kotlin.collections.addAll
-import kotlin.text.clear
 
-class ArtState(private val artRepository: ArtRepository)  : ViewModel() {
+class PokemonState(private val pokemonRepository: PokemonRepository)  : ViewModel() {
 
-    var artwork = mutableStateListOf<ArtPiece>()
+    var pokemon = mutableStateListOf<PokemonDetails>()
 
     var searchFlow = MutableStateFlow("")
 
@@ -32,10 +30,10 @@ class ArtState(private val artRepository: ArtRepository)  : ViewModel() {
     }
 
     suspend fun search(str: String) {
-        artwork.also {
+        pokemon.also {
             it.clear()
-            it.addAll(artRepository.search(str).pieces)
+            it.addAll(pokemonRepository.search(str).pokemonList)
         }
-        println(artwork)
+        println(pokemon)
     }
 }
