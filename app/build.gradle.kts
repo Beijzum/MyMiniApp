@@ -40,6 +40,9 @@ android {
 }
 
 dependencies {
+
+    implementation("androidx.navigation:navigation-compose:2.8.4")
+
     // ktor dependencies
     implementation("io.ktor:ktor-client-android:3.0.1")
     implementation("io.ktor:ktor-client-content-negotiation:3.0.1")
