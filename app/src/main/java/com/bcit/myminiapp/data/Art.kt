@@ -9,7 +9,5 @@ data class Art(
 
 data class ArtPiece(
     val id: String,
-    val title: String,
-    @SerializedName("image_id")
-    val image: String?
+    val name: String,
 )

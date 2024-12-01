@@ -10,11 +10,11 @@ import kotlin.toString
 
 class ArtRepository(private val client: HttpClient) {
 
-    suspend fun getArtwork(): Art {
-        val response = client.get(Endpoints.FIELDS.url)
-        val json = response.body<JsonObject>().toString()
-        return Gson().fromJson(json, Art::class.java)
-    }
+//    suspend fun getArtwork(): Art {
+//        val response = client.get(Endpoints.FIELDS.url)
+//        val json = response.body<JsonObject>().toString()
+//        return Gson().fromJson(json, Art::class.java)
+//    }
 
     suspend fun search(str: String): Art {
         val response = client.get(Endpoints.SEARCH.format(str))

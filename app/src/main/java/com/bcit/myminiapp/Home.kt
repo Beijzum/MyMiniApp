@@ -45,10 +45,10 @@ fun Home(navController: NavController) {
             verticalArrangement = Arrangement.Center
         ) {
             items(artState.artwork.size) {
-                Text(artState.artwork[it].title, fontSize = 30.sp)
+                Text(artState.artwork[it].name, fontSize = 30.sp)
                 Spacer(Modifier.height(30.dp))
                 AsyncImage(
-                    model = Endpoints.IMAGE_ENDPOINT.format(artState.artwork[it].image),
+                    model = Endpoints.IMAGE_ENDPOINT.format(artState.artwork[it].id.replace("-", "/")),
                     contentDescription = null
                 )
             }
