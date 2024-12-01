@@ -32,14 +32,13 @@ fun Home(navController: NavController) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Spacer(Modifier.height(30.dp))
         TextField( // emits every time type
             value = artState.searchFlow.collectAsState().value, onValueChange = {
                 artState.searchFlow.value = it
             },
             textStyle = TextStyle(fontSize = 30.sp)
         )
-
+        Spacer(Modifier.height(16.dp))
         LazyColumn(
             Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally,
