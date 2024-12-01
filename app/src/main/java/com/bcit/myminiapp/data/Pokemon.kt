@@ -10,14 +10,8 @@ data class Pokemon(
 data class PokemonDetails(
     val id: String,
     val name: String,
-    val images: Images,
     @SerializedName("tcgplayer")
     val link: TcgPlayer?
-)
-
-data class Images(
-    val small: String,
-    val large: String
 )
 
 data class TcgPlayer(
