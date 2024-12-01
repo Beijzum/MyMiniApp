@@ -39,7 +39,6 @@ fun MyTopNav(navController: NavController) {
                 Text(
                     text = "Pokemon Card Search",
                     fontSize = 20.sp,
-                    modifier = Modifier.padding(bottom = 8.dp)
                 )
                 IconButton(
                     onClick = {

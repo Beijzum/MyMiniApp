@@ -35,6 +35,7 @@ fun Home(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         TextField( // emits every time type
+            modifier = Modifier.padding(top = 10.dp),
             value = pokemonState.searchFlow.collectAsState().value, onValueChange = {
                 pokemonState.searchFlow.value = it
             },
