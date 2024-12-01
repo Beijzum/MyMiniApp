@@ -29,7 +29,7 @@ fun Home(navController: NavController) {
 
     Column(
         Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         TextField( // emits every time type
