@@ -3,9 +3,11 @@ package com.bcit.myminiapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -29,7 +31,10 @@ class MainActivity : ComponentActivity() {
                 NavHost(
                     navController = navController,
                     startDestination = "home",
-                    modifier = Modifier.padding(padding)) {
+                    modifier = Modifier
+                        .padding(padding)
+                        .background(Color(0xFFF5F5DC))
+                ) {
                     composable("home") {
                         viewModel(navController.getBackStackEntry("home")) {
                             PokemonState(pokemonRepository)
@@ -44,6 +49,5 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-
     }
 }
