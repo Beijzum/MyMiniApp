@@ -10,4 +10,10 @@ data class Pokemon(
 data class PokemonDetails(
     val id: String,
     val name: String,
+    val images: Images
+)
+
+data class Images(
+    val small: String,
+    val large: String
 )

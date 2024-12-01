@@ -36,8 +36,10 @@ class MainActivity : ComponentActivity() {
                         }
                         Home(navController)
                     }
-                    composable("details") {
-                        Details(navController)
+                    composable("details/{pokemonId}") { backStackEntry ->
+                        val pokemonId = backStackEntry.arguments?.getString("pokemonId")
+
+                        Details(navController, pokemonId)
                     }
                 }
             }
